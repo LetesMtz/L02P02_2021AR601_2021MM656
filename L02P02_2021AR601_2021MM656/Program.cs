@@ -1,7 +1,16 @@
+using Microsoft.EntityFrameworkCore;
+using Modulo1_Administracion.Models;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+//Inyectar la conexión
+builder.Services.AddDbContext<UsuariosDbContexto>(opt =>
+    opt.UseSqlServer(builder.Configuration.GetConnectionString("DulceSaborConnection")
+    )
+    );
 
 var app = builder.Build();
 
