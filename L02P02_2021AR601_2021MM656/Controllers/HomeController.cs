@@ -26,30 +26,35 @@ namespace L02P02_2021AR601_2021MM656.Controllers
 
         public IActionResult Index()
         {
-            //Aquí estamos invocando el listado de marcas de la tabla marcas
-            var listaDePuestos = (from m in _UsuariosDbContext.
+            //Aquí estamos invocando el listado de puestos de la tabla puestos
+            var listaDePuestos = (from m in _UsuariosDbContext.puestos
                                  select m).ToList();
-            ViewData["listadoDeMarcas"] = new SelectList(listaDeMarcas, "id_marcas", "nombre_marca");
+            ViewData["listadoDePuestos"] = new SelectList(listaDePuestos, "id", "puesto", "estado ", "created_at");
 
-            //Aquí estamos solicitando el listado de los equipos en la bd
-            var listadoDeEquipos = (from e in _equiposDbContext.equipos
-                                    join m in _equiposDbContext.marcas on e.id_marca equals m.id_marcas
+            //Aquí estamos invocando el listado de departamentos de la tabla departamentos
+            var listaDeDepartamentos = (from m in _UsuariosDbContext.puestos
+                                  select m).ToList();
+            ViewData["listadoDeDepartamentos"] = new SelectList(listaDeDepartamentos, "id", "departamento", "estado ", "created_at");
+
+            //Aquí estamos solicitando el listado de los Departamentos en la bd
+            var listadoDeDeDepartamentos = (from e in _UsuariosDbContext.departamentos
+                                    join m in _UsuariosDbContext.clientes on e.id equals m.id
                                     select new
                                     {
-                                        nombre = e.nombre,
-                                        descripcion = e.descripcion,
-                                        id_marca = e.id_marca,
-                                        marca_nombre = m.nombre_marca
+                                        departamento = e.departamento,
+                                        estado= e.estado,
+                                        id= e.id,
+                                        nombre = m.nombre
                                     }).ToList();
-            ViewData["listadoEquipo"] = listadoDeEquipos;
+            ViewData["listadoDeDepartamentos"] = listadoDeDeDepartamentos;
 
             //Aquí listaremos el listado de tipos de equipos
-            var listaDeTipoEquipos = (from m in _equiposDbContext.tipo_equipo
+            var listaDeTipoDeDepartamentos = (from m in _UsuariosDbContext.clientes
                                       select m).ToList();
-            ViewData["listadoDeTipoEquipos"] = new SelectList(listaDeTipoEquipos, "id_tipo_equipo", "descripcion");
+            ViewData["listadoDeDeDepartamentos"] = new SelectList(listaDeTipoDeDepartamentos, "id_tipo_equipo", "descripcion");
 
             //Listado de los tipos de estados de equipo
-            var listaDeEstados = (from m in _equiposDbContext.estados_equipo
+            var listaDeEstados = (from m in _UsuariosDbContext.clientes
                                   select m).ToList();
             ViewData["listadoDeEstados"] = new SelectList(listaDeEstados, "id_estados_equipo", "descripcion");
 
@@ -58,9 +63,7 @@ namespace L02P02_2021AR601_2021MM656.Controllers
         }
 
         //Función para guardar nuevos equipos
-    }
-
-    public IActionResult Privacy()
+        public IActionResult Privacy()
         {
             return View();
         }
@@ -83,4 +86,8 @@ namespace L02P02_2021AR601_2021MM656.Controllers
         }
 
     }
+
+
 }
+
+
