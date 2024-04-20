@@ -7,54 +7,52 @@
     <div class="w-100">
         <div class="w-100 d-flex justify-content-between  ">
             <div class="w-100">
-                <label for="nombre">Nombre</label>
-                <input type="text" class="form-control" name="" id="">
+                @Html.Label("Nombre")
+                @Html.TextBox("txtUserName", "", new { @class = "form-control" })
             </div>
             <div class="w-100 ms-4 ">
-                <label for="apellido">Apellido</label>
-                <input type="text" class="form-control" name="" id="">
+                @Html.Label("Apellido")
+                @Html.TextBox("txtUserLastName", "", new { @class = "form-control" })
             </div>
         </div>
 
         <div class="w-100 mt-3 ">
-            <label for="email">Email</label>
-            <input type="email" class="form-control" name="" id="">
+            @Html.Label("Email")
+            @Html.TextBox("txtUserEmail", "", new { @class = "form-control" })
         </div>
 
         <div class="w-100 mt-3 ">
-            <label for="email">Dirección</label>
-            <input type="email" class="form-control" name="" id="">
+            @Html.Label("Direccion")
+            @Html.TextBox("txtUserAddress", "", new { @class = "form-control" })
         </div>
 
         <div class="w-100 d-flex justify-content-between mt-3 ">
             <div class="w-100">
-                <label for="nombre">Nombre</label>
-                <select class="form-select" aria-label="Default select example">
-                    <option selected>Open this select menu</option>
-                    <option value="1">One</option>
-                    <option value="2">Two</option>
-                    <option value="3">Three</option>
-                </select>
+                @Html.Label("Departamento")
+                @{
+                    IEnumerable<string> strList = new List<string> { "DAW", "TW", "MAT3", "FIS1" };
+                }
+                @Html.DropDownList("curso", new SelectList(strList, strList.FirstOrDefault()), new { @class = "form-control" })
+
             </div>
 
             <div class="w-100 ms-4 d-block">
-                <label for="">Genero</label>
+                @Html.Label("Genero")
                 <div>
-                    <label for="apellido">Masculino</label>
-                    <input type="radio" name="" id="">
-                    <label for="apellido">Femenino</label>
-                    <input type="radio" name="" id="">
+                    @Html.RadioButton("Genero", "Masculino", true, new { id = "masculino" })
+                    Masculino
+                    @Html.RadioButton("Genero", "Femenino", true, new { id = "femenino" })
+                    Femenino
+
                 </div>
             </div>
 
             <div class="w-100">
-                <label for="nombre">Puesto</label>
-                <select class="form-select" aria-label="Default select example">
-                    <option selected>Selecciona...</option>
-                    <option value="1">One</option>
-                    <option value="2">Two</option>
-                    <option value="3">Three</option>
-                </select>
+                @Html.Label("Puesto")
+                @{
+                    IEnumerable<string> strList2 = new List<string> { "DAW", "TW", "MAT3", "FIS1" };
+                }
+                @Html.DropDownList("curso", new SelectList(strList2, strList2.FirstOrDefault()), new { @class = "form-control" })
             </div>
         </div>
     </div>
