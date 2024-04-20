@@ -2,7 +2,7 @@
 
 namespace L02P02_2021AR601_2021MM656.Controllers
 {
-    public class usuariosDB : Controller
+    public class usuariosDBController : Controller
     {
         public IActionResult Index()
         {
