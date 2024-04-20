@@ -4,7 +4,7 @@
 
 <!-- INICIO DEL FORMULARIO -->
 <div class="container d-flex ">
-    @using (Html.BeginForm("Create", "Home", FormMethod.Post))
+    @using (Html.BeginForm("CreateClientes", "Home", FormMethod.Post))
     {
         <div class="w-100">
             <div class="w-100 d-flex justify-content-between  ">
@@ -31,19 +31,16 @@
             <div class="w-100 d-flex justify-content-between mt-3 ">
                 <div class="w-100">
                     @Html.Label("Departamento")
-                    @{
-                        IEnumerable<string> strList = new List<string> { "DAW", "TW", "MAT3", "FIS1" };
-                    }
-                    @Html.DropDownList("curso", new SelectList(ViewData["listadoDeDepartamentos"] as SelectList, new { @class = "form-control" }))
+                    @Html.DropDownList("curso", new SelectList((IEnumerable<dynamic>)ViewData["listadoDePuestos"] as SelectList, new { @class = "form-control" }))
 
                 </div>
 
                 <div class="w-100 ms-4 d-block">
                     @Html.Label("Genero")
                     <div>
-                        @Html.RadioButton("Genero", "Masculino", true, new { id = "masculino" })
+                        @Html.RadioButton("genero", "M", true, new { id = "genero" })
                         Masculino
-                        @Html.RadioButton("Genero", "Femenino", true, new { id = "femenino" })
+                        @Html.RadioButton("genero", "F", true, new { id = "genero" })
                         Femenino
 
                     </div>
@@ -51,9 +48,6 @@
 
                 <div class="w-100">
                     @Html.Label("Puesto")
-                    @{
-                        IEnumerable<string> strList2 = new List<string> { "DAW", "TW", "MAT3", "FIS1" };
-                    }
                     @Html.DropDownList("curso", new SelectList(ViewData["listadoDePuestos"] as SelectList, new { @class = "form-control" }))
                 </div>
             </div>

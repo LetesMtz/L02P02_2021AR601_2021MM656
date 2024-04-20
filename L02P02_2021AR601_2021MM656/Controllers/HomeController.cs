@@ -17,7 +17,6 @@ namespace L02P02_2021AR601_2021MM656.Controllers
 
         }
 
-        [HttpGet]
         public IActionResult Index()
 
         {
@@ -35,25 +34,25 @@ namespace L02P02_2021AR601_2021MM656.Controllers
 
 
             //Aquí estamos solicitando el listado de los Departamentos en la bd
-            var listadoDeDeClientes= (from c in _UsuariosDbContext.clientes
+            //var listadoDeDeClientes= (from c in _UsuariosDbContext.clientes
 
-                                      select new
-                                      { 
-                                          id = c.id,
+            //                          select new
+            //                          { 
+            //                              id = c.id,
                                       
-                                          nombre=c.nombre,
-                                          apellido = c.apellido,
-                                          email = c.email,
-                                          direccion = c.direccion,
-                                          genero = c.genero,
-                                          id_departamento = c.id_departamento,
-                                          id_puesto= c.id_puesto ,
-                                          estado_registro = c.estado_registro,
-                                          created_at = c.created_at,
-                                          updated_at = c.updated_at 
+            //                              nombre=c.nombre,
+            //                              apellido = c.apellido,
+            //                              email = c.email,
+            //                              direccion = c.direccion,
+            //                              genero = c.genero,
+            //                              id_departamento = c.id_departamento,
+            //                              id_puesto= c.id_puesto ,
+            //                              estado_registro = c.estado_registro,
+            //                              created_at = c.created_at,
+            //                              updated_at = c.updated_at 
 
-                                      }).ToList();
-            ViewData["listadoDeClientes"] = listadoDeDeClientes;
+            //                          }).ToList();
+            //ViewData["listadoDeClientes"] = listadoDeDeClientes;
 
 
 
@@ -61,7 +60,6 @@ namespace L02P02_2021AR601_2021MM656.Controllers
         }
 
         //Función para guardar nuevos equipos
-        [HttpGet]
         public IActionResult Privacy()
         {
             return View();
@@ -73,20 +71,7 @@ namespace L02P02_2021AR601_2021MM656.Controllers
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
 
-
-        //Función para guardar nuevos usuariosDB
-        [HttpPost]
-        public IActionResult CrearEquipos(usuariosDB nuevoUsuariosDB)
-        {
-            _UsuariosDbContext.Add(nuevoUsuariosDB);
-            _UsuariosDbContext.SaveChanges();
-
-            return RedirectToAction("Index");
-
-        }
-
-        [HttpGet]
-        public IActionResult Create(clientes nuevoCliente)
+        public IActionResult CreateClientes(clientes nuevoCliente)
         {
             _UsuariosDbContext.Add(nuevoCliente);
             _UsuariosDbContext.SaveChanges();

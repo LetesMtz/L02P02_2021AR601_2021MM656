@@ -8,7 +8,7 @@ builder.Services.AddControllersWithViews();
 
 //Inyectar la conexión
 builder.Services.AddDbContext<UsuariosDbContext>(opt =>
-    opt.UseSqlServer(builder.Configuration.GetConnectionString("DulceSaborConnection")
+    opt.UseSqlServer(builder.Configuration.GetConnectionString("usuarioDbConnection")
     )
     );
 
