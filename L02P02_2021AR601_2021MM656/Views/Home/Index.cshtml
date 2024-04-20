@@ -4,74 +4,78 @@
 
 <!-- INICIO DEL FORMULARIO -->
 <div class="container d-flex ">
-    <div class="w-100">
-        <div class="w-100 d-flex justify-content-between  ">
-            <div class="w-100">
-                @Html.Label("Nombre")
-                @Html.TextBox("txtUserName", "", new { @class = "form-control" })
-            </div>
-            <div class="w-100 ms-4 ">
-                @Html.Label("Apellido")
-                @Html.TextBox("txtUserLastName", "", new { @class = "form-control" })
-            </div>
-        </div>
-
-        <div class="w-100 mt-3 ">
-            @Html.Label("Email")
-            @Html.TextBox("txtUserEmail", "", new { @class = "form-control" })
-        </div>
-
-        <div class="w-100 mt-3 ">
-            @Html.Label("Direccion")
-            @Html.TextBox("txtUserAddress", "", new { @class = "form-control" })
-        </div>
-
-        <div class="w-100 d-flex justify-content-between mt-3 ">
-            <div class="w-100">
-                @Html.Label("Departamento")
-                @{
-                    IEnumerable<string> strList = new List<string> { "DAW", "TW", "MAT3", "FIS1" };
-                }
-                @Html.DropDownList("curso", new SelectList(strList, strList.FirstOrDefault()), new { @class = "form-control" })
-
-            </div>
-
-            <div class="w-100 ms-4 d-block">
-                @Html.Label("Genero")
-                <div>
-                    @Html.RadioButton("Genero", "Masculino", true, new { id = "masculino" })
-                    Masculino
-                    @Html.RadioButton("Genero", "Femenino", true, new { id = "femenino" })
-                    Femenino
-
+    @using (Html.BeginForm("CrearEquipos", "Home", FormMethod.Post))
+    {
+        <div class="w-100">
+            <div class="w-100 d-flex justify-content-between  ">
+                <div class="w-100">
+                    @Html.Label("Nombre")
+                    @Html.TextBox("txtUserName", "", new { @class = "form-control" })
+                </div>
+                <div class="w-100 ms-4 ">
+                    @Html.Label("Apellido")
+                    @Html.TextBox("txtUserLastName", "", new { @class = "form-control" })
                 </div>
             </div>
 
-            <div class="w-100">
-                @Html.Label("Puesto")
-                @{
-                    IEnumerable<string> strList2 = new List<string> { "DAW", "TW", "MAT3", "FIS1" };
-                }
-                @Html.DropDownList("curso", new SelectList(strList2, strList2.FirstOrDefault()), new { @class = "form-control" })
+            <div class="w-100 mt-3 ">
+                @Html.Label("Email")
+                @Html.TextBox("txtUserEmail", "", new { @class = "form-control" })
             </div>
-        </div>
-    </div>
-    <div class="ms-5">
-        <div class="card" style="width: 26rem; text-align: center; justify-content: center;">
-            <div class="pt-4 pb-2 ">
-                <img src="https://firebasestorage.googleapis.com/v0/b/dulcesabor-imagenes.appspot.com/o/L02P02_2021AR601_2021MM656%2Fimagenes-de-usuario.png?alt=media&token=2ee4e2ca-df3d-496d-b6c9-b14cc5dd7b1f" class="" width="115px" alt="...">
-            </div>
-            <div class="card-body">
-                <input type="file" class="form-control " name="" id="">
-            </div>
-        </div>
 
-        <div class="card mt-3" style="width: 26rem; text-align: center; justify-content: center;">
-            <div class="card-body p-2 ">
-                <a href="#" class="btn btn-success w-100 ">Guardar</a>
+            <div class="w-100 mt-3 ">
+                @Html.Label("Direccion")
+                @Html.TextBox("txtUserAddress", "", new { @class = "form-control" })
+            </div>
+
+            <div class="w-100 d-flex justify-content-between mt-3 ">
+                <div class="w-100">
+                    @Html.Label("Departamento")
+                    @{
+                        IEnumerable<string> strList = new List<string> { "DAW", "TW", "MAT3", "FIS1" };
+                    }
+                    @Html.DropDownList("curso", new SelectList(strList, strList.FirstOrDefault()), new { @class = "form-control" })
+
+                </div>
+
+                <div class="w-100 ms-4 d-block">
+                    @Html.Label("Genero")
+                    <div>
+                        @Html.RadioButton("Genero", "Masculino", true, new { id = "masculino" })
+                        Masculino
+                        @Html.RadioButton("Genero", "Femenino", true, new { id = "femenino" })
+                        Femenino
+
+                    </div>
+                </div>
+
+                <div class="w-100">
+                    @Html.Label("Puesto")
+                    @{
+                        IEnumerable<string> strList2 = new List<string> { "DAW", "TW", "MAT3", "FIS1" };
+                    }
+                    @Html.DropDownList("curso", new SelectList(strList2, strList2.FirstOrDefault()), new { @class = "form-control" })
+                </div>
             </div>
         </div>
-    </div>
+        <div class="ms-5">
+            <div class="card" style="width: 26rem; text-align: center; justify-content: center;">
+                <div class="pt-4 pb-2 ">
+                    <img src="https://firebasestorage.googleapis.com/v0/b/dulcesabor-imagenes.appspot.com/o/L02P02_2021AR601_2021MM656%2Fimagenes-de-usuario.png?alt=media&token=2ee4e2ca-df3d-496d-b6c9-b14cc5dd7b1f" class="" width="115px" alt="...">
+                </div>
+                <div class="card-body">
+                    <input type="file" class="form-control " name="userImg" id="userImg">
+                    @Html
+                </div>
+            </div>
+
+            <div class="card mt-3" style="width: 26rem; text-align: center; justify-content: center;">
+                <div class="card-body p-2 ">
+                    <button type="submit" class="btn btn-success w-100 ">Guardar</button>
+                </div>
+            </div>
+        </div>
+    }
 </div>
 <!-- FIN DEL FORMULARIO -->
 
