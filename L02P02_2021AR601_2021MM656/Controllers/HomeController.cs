@@ -25,7 +25,13 @@ namespace L02P02_2021AR601_2021MM656.Controllers
         }
 
         public IActionResult Index()
+
         {
+            //Aquí estamos invocando el listado de clientes de la tabla clientes
+            var listaDeClientes = (from m in _UsuariosDbContext.clientes
+                                  select m).ToList();
+            ViewData["listadoDeClientes"] = new SelectList(listaDeClientes,"id", "nombre", "apellido", "email ", "direccion", "genero"," id_departamento", "id_puesto", "estado_registro", "created_at", "updated_at");
+
             //Aquí estamos invocando el listado de puestos de la tabla puestos
             var listaDePuestos = (from m in _UsuariosDbContext.puestos
                                  select m).ToList();
@@ -35,6 +41,10 @@ namespace L02P02_2021AR601_2021MM656.Controllers
             var listaDeDepartamentos = (from m in _UsuariosDbContext.puestos
                                   select m).ToList();
             ViewData["listadoDeDepartamentos"] = new SelectList(listaDeDepartamentos, "id", "departamento", "estado ", "created_at");
+
+
+
+
 
             //Aquí estamos solicitando el listado de los Departamentos en la bd
             var listadoDeDeDepartamentos = (from e in _UsuariosDbContext.departamentos
