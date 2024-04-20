@@ -8,6 +8,7 @@ namespace L02P02_2021AR601_2021MM656.Controllers
     {
         private readonly ILogger<HomeController> _logger;
 
+
         public HomeController(ILogger<HomeController> logger)
         {
             _logger = logger;
