@@ -38,7 +38,6 @@ namespace L02P02_2021AR601_2021MM656.Models
             public int? id_departamento { get; set; }
 
             public int? id_puesto { get; set; }
-            public string? estado { get; set; }
 
             public string? estado_registro { get; set; }
 
