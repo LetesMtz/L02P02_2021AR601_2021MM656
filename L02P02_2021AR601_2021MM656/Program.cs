@@ -1,5 +1,5 @@
 using Microsoft.EntityFrameworkCore;
-using Modulo1_Administracion.Models;
+using L02P02_2021AR601_2021MM656.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -7,7 +7,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 
 //Inyectar la conexión
-builder.Services.AddDbContext<UsuariosDbContexto>(opt =>
+builder.Services.AddDbContext<UsuariosDbContext>(opt =>
     opt.UseSqlServer(builder.Configuration.GetConnectionString("DulceSaborConnection")
     )
     );

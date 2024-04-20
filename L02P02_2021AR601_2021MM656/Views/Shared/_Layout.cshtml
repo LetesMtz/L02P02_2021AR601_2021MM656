@@ -9,38 +9,33 @@
     <link rel="stylesheet" href="~/L02P02_2021AR601_2021MM656.styles.css" asp-append-version="true" />
 </head>
 <body>
+    <!-- INCIO DEL HEADER -->
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">L02P02_2021AR601_2021MM656</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
-                    </ul>
-                </div>
+        <div class="bg-primary text-center mb-5 pb-5 pt-2">
+            <div class="img">
+                <img src="https://firebasestorage.googleapis.com/v0/b/dulcesabor-imagenes.appspot.com/o/L02P02_2021AR601_2021MM656%2Flogo_unicaes.png?alt=media&token=da41375f-edc2-4fa1-924b-7bf97437a4d8" width="100vw" alt="">
             </div>
-        </nav>
+            <div class="titulo text-light ">
+                <h3>Creación de Usuarios</h3>
+                <span>Ingrese los datos solicitados</span>
+            </div>
+        </div>
     </header>
+    <!-- FIN DEL HEADER -->
+
     <div class="container">
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2024 - L02P02_2021AR601_2021MM656 - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-        </div>
+    <!-- INICIO DEL FOOTER -->
+    <footer class="bg-primary text-light text-center pt-3 pb-3 ">
+        <span>2021AR601 - Norma Arrivillaga</span>
+        <br>
+        <span>2021MM656 - Carlos Murga</span>
     </footer>
+    <!-- FIN DEL FOOTER -->
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>

@@ -2,4 +2,128 @@
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
 @{
+    ViewData["Title"] = "Home Page";
 }
+<!-- INICIO DEL FORMULARIO -->
+            <div class="container d-flex ">
+                <div class="w-100" >
+                    <div class="w-100 d-flex justify-content-between  ">
+                        <div class="w-100">
+                            <label for="nombre">Nombre</label>
+                            <input type="text" class="form-control" name="" id="">
+                        </div>
+                        <div class="w-100 ms-4 ">
+                            <label for="apellido">Apellido</label>
+                            <input type="text" class="form-control" name="" id="">
+                        </div>
+                    </div>
+    
+                    <div class="w-100 mt-3 ">
+                        <label for="email">Email</label>
+                        <input type="email" class="form-control" name="" id="">
+                    </div>
+
+                    <div class="w-100 mt-3 ">
+                        <label for="email">Dirección</label>
+                        <input type="email" class="form-control" name="" id="">
+                    </div>
+
+                    <div class="w-100 d-flex justify-content-between mt-3 ">
+                        <div class="w-100">
+                            <label for="nombre">Nombre</label>
+                            <select class="form-select" aria-label="Default select example">
+                                <option selected>Open this select menu</option>
+                                <option value="1">One</option>
+                                <option value="2">Two</option>
+                                <option value="3">Three</option>
+                              </select>
+                        </div>
+
+                        <div class="w-100 ms-4 d-block">
+                            <label for="">Genero</label>
+                            <div>
+                                <label for="apellido">Masculino</label>
+                                <input type="radio" name="" id="">
+                                <label for="apellido">Femenino</label>
+                                <input type="radio" name="" id="">
+                            </div>
+                        </div>
+
+                        <div class="w-100">
+                            <label for="nombre">Puesto</label>
+                            <select class="form-select" aria-label="Default select example">
+                                <option selected>Selecciona...</option>
+                                <option value="1">One</option>
+                                <option value="2">Two</option>
+                                <option value="3">Three</option>
+                              </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="ms-5">
+                    <div class="card" style="width: 26rem; text-align: center; justify-content: center;">
+                        <div class="pt-4 pb-2 ">
+                            <img src="./imagenes-de-usuario.png" class="" width="115px" alt="...">
+                        </div>
+                        <div class="card-body">
+                          <input type="file" class="form-control " name="" id="">
+                        </div>
+                      </div>
+
+                      <div class="card mt-3" style="width: 26rem; text-align: center; justify-content: center;">
+                        <div class="card-body p-2 ">
+                          <a href="#" class="btn btn-success w-100 ">Guardar</a>
+                        </div>
+                      </div>
+                </div>
+        </div>
+        <!-- FIN DEL FORMULARIO -->
+
+        <hr>
+
+        <!-- INICIO DE LA TABLA -->
+        <div class="container">
+            <table class="table table-striped ">
+                <thead>
+                  <tr>
+                    <th scope="col">Nombre completo</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Dirección</th>
+                    <th scope="col">Departamento</th>
+                    <th scope="col">Genero</th>
+                    <th scope="col">Puesto</th>
+                    <th scope="col"></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row">1</th>
+                    <td>Mark</td>
+                    <td>Otto</td>
+                    <td>mdo</td>
+                    <td>mdo</td>
+                    <td>mdo</td>
+                    <td><button class="form-control bg-danger text-light ">Eliminar</button></td>
+                  </tr>
+                  <tr>
+                    <th scope="row">1</th>
+                    <td>Mark</td>
+                    <td>Otto</td>
+                    <td>mdo</td>
+                    <td>mdo</td>
+                    <td>mdo</td>
+                    <td><button class="form-control bg-danger text-light ">Eliminar</button></td>
+                  </tr>
+                  <tr>
+                    <th scope="row">1</th>
+                    <td>Mark</td>
+                    <td>Otto</td>
+                    <td>mdo</td>
+                    <td>mdo</td>
+                    <td>mdo</td>
+                    <td><button class="form-control bg-danger text-light ">Eliminar</button></td>
+                  </tr>
+                </tbody>
+              </table>
+        </div>
+        <!-- FIN DE LA TABLA -->
