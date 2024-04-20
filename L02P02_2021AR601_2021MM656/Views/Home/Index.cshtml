@@ -10,28 +10,28 @@
             <div class="w-100 d-flex justify-content-between  ">
                 <div class="w-100">
                     @Html.Label("Nombre")
-                    @Html.TextBox("txtUserName", "", new { @class = "form-control" })
+                    @Html.TextBox("nombre", "", new { @class = "form-control" })
                 </div>
                 <div class="w-100 ms-4 ">
                     @Html.Label("Apellido")
-                    @Html.TextBox("txtUserLastName", "", new { @class = "form-control" })
+                    @Html.TextBox("apellido", "", new { @class = "form-control" })
                 </div>
             </div>
 
             <div class="w-100 mt-3 ">
                 @Html.Label("Email")
-                @Html.TextBox("txtUserEmail", "", new { @class = "form-control" })
+                @Html.TextBox("email", "", new { @class = "form-control" })
             </div>
 
             <div class="w-100 mt-3 ">
                 @Html.Label("Direccion")
-                @Html.TextBox("txtUserAddress", "", new { @class = "form-control" })
+                @Html.TextBox("direccion", "", new { @class = "form-control" })
             </div>
 
             <div class="w-100 d-flex justify-content-between mt-3 ">
                 <div class="w-100">
                     @Html.Label("Departamento")
-                    @Html.DropDownList("curso", new SelectList((IEnumerable<dynamic>)ViewData["listadoDePuestos"] as SelectList, new { @class = "form-control" }))
+                    @Html.DropDownList("id_departamento", new SelectList(ViewData["listadoDeDepartamentos"] as SelectList), new { @class = "form-control" })
 
                 </div>
 
@@ -48,7 +48,11 @@
 
                 <div class="w-100">
                     @Html.Label("Puesto")
-                    @Html.DropDownList("curso", new SelectList(ViewData["listadoDePuestos"] as SelectList, new { @class = "form-control" }))
+
+                    
+
+                    <span></span>
+                    @Html.DropDownList("id_puesto", new SelectList(ViewData["listadoDePuestos"] as SelectList), new { @class = "form-control" })
                 </div>
             </div>
         </div>
@@ -90,33 +94,18 @@
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <th scope="row">1</th>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>mdo</td>
-                <td>mdo</td>
-                <td>mdo</td>
-                <td><button class="form-control bg-danger text-light ">Eliminar</button></td>
-            </tr>
-            <tr>
-                <th scope="row">1</th>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>mdo</td>
-                <td>mdo</td>
-                <td>mdo</td>
-                <td><button class="form-control bg-danger text-light ">Eliminar</button></td>
-            </tr>
-            <tr>
-                <th scope="row">1</th>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>mdo</td>
-                <td>mdo</td>
-                <td>mdo</td>
-                <td><button class="form-control bg-danger text-light ">Eliminar</button></td>
-            </tr>
+            @foreach (var cliente in (IEnumerable<dynamic>)ViewData["listadoDeClientes"])
+            {
+                <tr>
+                    <th scope="row">@cliente.id</th>
+                    <td>@cliente.email</td>
+                    <td>@cliente.direccion</td>
+                    <td>@cliente.id_departamento</td>
+                    <td>@cliente.genero</td>
+                    <td>@cliente.id_puesto</td>
+                    <td><button class="form-control bg-danger text-light ">Eliminar</button></td>
+                </tr>
+            }
         </tbody>
     </table>
 </div>

@@ -27,32 +27,32 @@ namespace L02P02_2021AR601_2021MM656.Controllers
             ViewData["listadoDePuestos"] = new SelectList(listaDePuestos, "id", "puesto");
 
             //Aquí estamos invocando el listado de departamentos de la tabla departamentos
-            var listaDeDepartamentos = (from m in _UsuariosDbContext.puestos
+            var listaDeDepartamentos = (from m in _UsuariosDbContext.departamentos
                                   select m).ToList();
             ViewData["listadoDeDepartamentos"] = new SelectList(listaDeDepartamentos, "id", "departamento");
 
 
 
             //Aquí estamos solicitando el listado de los Departamentos en la bd
-            //var listadoDeDeClientes= (from c in _UsuariosDbContext.clientes
+            var listadoDeDeClientes = (from c in _UsuariosDbContext.clientes
 
-            //                          select new
-            //                          { 
-            //                              id = c.id,
-                                      
-            //                              nombre=c.nombre,
-            //                              apellido = c.apellido,
-            //                              email = c.email,
-            //                              direccion = c.direccion,
-            //                              genero = c.genero,
-            //                              id_departamento = c.id_departamento,
-            //                              id_puesto= c.id_puesto ,
-            //                              estado_registro = c.estado_registro,
-            //                              created_at = c.created_at,
-            //                              updated_at = c.updated_at 
+                                       select new
+                                       {
+                                           id = c.id,
 
-            //                          }).ToList();
-            //ViewData["listadoDeClientes"] = listadoDeDeClientes;
+                                           nombre = c.nombre,
+                                           apellido = c.apellido,
+                                           email = c.email,
+                                           direccion = c.direccion,
+                                           genero = c.genero,
+                                           id_departamento = c.id_departamento,
+                                           id_puesto = c.id_puesto,
+                                           estado_registro = c.estado_registro,
+                                           created_at = c.created_at,
+                                           updated_at = c.updated_at
+
+                                       }).ToList();
+            ViewData["listadoDeClientes"] = listadoDeDeClientes;
 
 
 
