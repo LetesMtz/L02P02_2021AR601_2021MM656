@@ -34,7 +34,7 @@
                     @{
                         IEnumerable<string> strList = new List<string> { "DAW", "TW", "MAT3", "FIS1" };
                     }
-                    @Html.DropDownList("curso", new SelectList(strList, strList.FirstOrDefault()), new { @class = "form-control" })
+                    @Html.DropDownList("curso", new SelectList(ViewData["listadoDeDepartamentos"] as SelectList, new { @class = "form-control" }))
 
                 </div>
 
@@ -54,7 +54,7 @@
                     @{
                         IEnumerable<string> strList2 = new List<string> { "DAW", "TW", "MAT3", "FIS1" };
                     }
-                    @Html.DropDownList("curso", new SelectList(strList2, strList2.FirstOrDefault()), new { @class = "form-control" })
+                    @Html.DropDownList("curso", new SelectList(ViewData["listadoDePuestos"] as SelectList, new { @class = "form-control" }))
                 </div>
             </div>
         </div>
