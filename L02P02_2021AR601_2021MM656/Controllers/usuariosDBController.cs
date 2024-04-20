@@ -18,15 +18,8 @@ namespace L02P02_2021AR601_2021MM656.Controllers
 
         public IActionResult Index()
         {
-                                 select m).ToList();
-                                    }).ToList();
-                                      select m).ToList();
+         
             return View();
         }
-            return View();
     }   
-}
-}
-}
-}
 }
