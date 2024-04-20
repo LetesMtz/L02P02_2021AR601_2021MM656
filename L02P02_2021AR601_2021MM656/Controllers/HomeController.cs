@@ -16,14 +16,8 @@ namespace L02P02_2021AR601_2021MM656.Controllers
             _UsuariosDbContext = UsuariosDbContext;
 
         }
-        private readonly ILogger<HomeController> _logger;
 
-
-        public HomeController(ILogger<HomeController> logger)
-        {
-            _logger = logger;
-        }
-
+        [HttpGet]
         public IActionResult Index()
 
         {
@@ -67,6 +61,7 @@ namespace L02P02_2021AR601_2021MM656.Controllers
         }
 
         //Función para guardar nuevos equipos
+        [HttpGet]
         public IActionResult Privacy()
         {
             return View();
@@ -80,9 +75,20 @@ namespace L02P02_2021AR601_2021MM656.Controllers
 
 
         //Función para guardar nuevos usuariosDB
+        [HttpPost]
         public IActionResult CrearEquipos(usuariosDB nuevoUsuariosDB)
         {
             _UsuariosDbContext.Add(nuevoUsuariosDB);
+            _UsuariosDbContext.SaveChanges();
+
+            return RedirectToAction("Index");
+
+        }
+
+        [HttpGet]
+        public IActionResult Create(clientes nuevoCliente)
+        {
+            _UsuariosDbContext.Add(nuevoCliente);
             _UsuariosDbContext.SaveChanges();
 
             return RedirectToAction("Index");
