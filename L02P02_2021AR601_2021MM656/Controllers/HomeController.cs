@@ -27,46 +27,40 @@ namespace L02P02_2021AR601_2021MM656.Controllers
         public IActionResult Index()
 
         {
-            //Aquí estamos invocando el listado de clientes de la tabla clientes
-            var listaDeClientes = (from m in _UsuariosDbContext.clientes
-                                  select m).ToList();
-            ViewData["listadoDeClientes"] = new SelectList(listaDeClientes,"id", "nombre", "apellido", "email ", "direccion", "genero"," id_departamento", "id_puesto", "estado_registro", "created_at", "updated_at");
-
+            
             //Aquí estamos invocando el listado de puestos de la tabla puestos
             var listaDePuestos = (from m in _UsuariosDbContext.puestos
                                  select m).ToList();
-            ViewData["listadoDePuestos"] = new SelectList(listaDePuestos, "id", "puesto", "estado ", "created_at");
+            ViewData["listadoDePuestos"] = new SelectList(listaDePuestos, "id", "puesto");
 
             //Aquí estamos invocando el listado de departamentos de la tabla departamentos
             var listaDeDepartamentos = (from m in _UsuariosDbContext.puestos
                                   select m).ToList();
-            ViewData["listadoDeDepartamentos"] = new SelectList(listaDeDepartamentos, "id", "departamento", "estado ", "created_at");
-
-
+            ViewData["listadoDeDepartamentos"] = new SelectList(listaDeDepartamentos, "id", "departamento");
 
 
 
             //Aquí estamos solicitando el listado de los Departamentos en la bd
-            var listadoDeDeDepartamentos = (from e in _UsuariosDbContext.departamentos
-                                    join m in _UsuariosDbContext.clientes on e.id equals m.id
-                                    select new
-                                    {
-                                        departamento = e.departamento,
-                                        estado= e.estado,
-                                        id= e.id,
-                                        nombre = m.nombre
-                                    }).ToList();
-            ViewData["listadoDeDepartamentos"] = listadoDeDeDepartamentos;
+            var listadoDeDeClientes= (from c in _UsuariosDbContext.clientes
 
-            //Aquí listaremos el listado de tipos de equipos
-            var listaDeTipoDeDepartamentos = (from m in _UsuariosDbContext.clientes
-                                      select m).ToList();
-            ViewData["listadoDeDeDepartamentos"] = new SelectList(listaDeTipoDeDepartamentos, "id_tipo_equipo", "descripcion");
+                                      select new
+                                      { 
+                                          id = c.id,
+                                      
+                                          nombre=c.nombre,
+                                          apellido = c.apellido,
+                                          email = c.email,
+                                          direccion = c.direccion,
+                                          genero = c.genero,
+                                          id_departamento = c.id_departamento,
+                                          id_puesto= c.id_puesto ,
+                                          estado_registro = c.estado_registro,
+                                          created_at = c.created_at,
+                                          updated_at = c.updated_at 
 
-            //Listado de los tipos de estados de equipo
-            var listaDeEstados = (from m in _UsuariosDbContext.clientes
-                                  select m).ToList();
-            ViewData["listadoDeEstados"] = new SelectList(listaDeEstados, "id_estados_equipo", "descripcion");
+                                      }).ToList();
+            ViewData["listadoDeClientes"] = listadoDeDeClientes;
+
 
 
             return View();
