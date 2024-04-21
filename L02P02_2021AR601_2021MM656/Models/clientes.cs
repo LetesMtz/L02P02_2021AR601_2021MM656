@@ -5,7 +5,7 @@ namespace L02P02_2021AR601_2021MM656.Models
     public class clientes
     {
         [Key]
-        public int id { get; set; } = 2;
+        public int id { get; set; } = 4;
         public string? nombre { get; set; }
         public string? apellido { get; set; }
         public string? email { get; set; }

@@ -1,6 +1,7 @@
 using L02P02_2021AR601_2021MM656.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
 using System.Diagnostics;
 
 namespace L02P02_2021AR601_2021MM656.Controllers
@@ -35,7 +36,8 @@ namespace L02P02_2021AR601_2021MM656.Controllers
 
             //Aquí estamos solicitando el listado de los Departamentos en la bd
             var listadoDeDeClientes = (from c in _UsuariosDbContext.clientes
-
+                                       join d in _UsuariosDbContext.departamentos on c.id_departamento equals d.id
+                                       join p in _UsuariosDbContext.puestos on c.id_puesto equals p.id
                                        select new
                                        {
                                            id = c.id,
@@ -45,8 +47,8 @@ namespace L02P02_2021AR601_2021MM656.Controllers
                                            email = c.email,
                                            direccion = c.direccion,
                                            genero = c.genero,
-                                           id_departamento = c.id_departamento,
-                                           id_puesto = c.id_puesto,
+                                           id_departamento = d.departamento,
+                                           id_puesto = p.puesto,
                                            estado_registro = c.estado_registro,
                                            created_at = c.created_at,
                                            updated_at = c.updated_at
@@ -78,6 +80,20 @@ namespace L02P02_2021AR601_2021MM656.Controllers
 
             return RedirectToAction("Index");
 
+        }
+
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> DeleteConfirmed(int id)
+        {
+            var alumnos = await _UsuariosDbContext.clientes.FindAsync(id);
+            if (alumnos != null)
+            {
+                _UsuariosDbContext.clientes.Remove(alumnos);
+            }
+
+            await _UsuariosDbContext.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
         }
 
 

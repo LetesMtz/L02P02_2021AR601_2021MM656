@@ -31,7 +31,7 @@
             <div class="w-100 d-flex justify-content-between mt-3 ">
                 <div class="w-100">
                     @Html.Label("Departamento")
-                    @Html.DropDownList("id_departamento", new SelectList(ViewData["listadoDeDepartamentos"] as SelectList), new { @class = "form-control" })
+                    @Html.DropDownList("id_departamento", ViewData["listadoDeDepartamentos"] as SelectList, "Seleccione...", new { @class = "form-control" })
 
                 </div>
 
@@ -52,7 +52,7 @@
                     
 
                     <span></span>
-                    @Html.DropDownList("id_puesto", new SelectList(ViewData["listadoDePuestos"] as SelectList), new { @class = "form-control" })
+                    @Html.DropDownList("id_puesto", ViewData["listadoDePuestos"] as SelectList, "Seleccione...",new { @class = "form-control" })
                 </div>
             </div>
         </div>
@@ -62,8 +62,7 @@
                     <img src="https://firebasestorage.googleapis.com/v0/b/dulcesabor-imagenes.appspot.com/o/L02P02_2021AR601_2021MM656%2Fimagenes-de-usuario.png?alt=media&token=2ee4e2ca-df3d-496d-b6c9-b14cc5dd7b1f" class="" width="115px" alt="...">
                 </div>
                 <div class="card-body">
-                    <input type="file" class="form-control " name="userImg" id="userImg">
-                    
+                    <input type="file" class="form-control " name="imagen" id="imagen">
                 </div>
             </div>
 
@@ -80,6 +79,7 @@
 <hr>
 
 <!-- INICIO DE LA TABLA -->
+<form asp-action="Delete">
 <div class="container">
     <table class="table table-striped ">
         <thead>
@@ -97,16 +97,18 @@
             @foreach (var cliente in (IEnumerable<dynamic>)ViewData["listadoDeClientes"])
             {
                 <tr>
-                    <th scope="row">@cliente.id</th>
+                    <th scope="row">@cliente.nombre @cliente.apellido</th>
                     <td>@cliente.email</td>
                     <td>@cliente.direccion</td>
                     <td>@cliente.id_departamento</td>
                     <td>@cliente.genero</td>
                     <td>@cliente.id_puesto</td>
-                    <td><button class="form-control bg-danger text-light ">Eliminar</button></td>
+                        <input type="hidden" value="@cliente.id" name="id" id="id"/>
+                    <td><button type="submit" class="form-control bg-danger text-light">Eliminar</button></td>
                 </tr>
             }
         </tbody>
     </table>
 </div>
+</form>
 <!-- FIN DE LA TABLA -->
